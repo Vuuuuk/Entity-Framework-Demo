@@ -1,0 +1,11 @@
+-----GENERISANJE KLASA-----
+
+/* REMOTE */
+
+Scaffold-DbContext "Server=IP;Database=AutoSkola;User Id=USER;Password=PASSWORD;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+/* LOCAL */
+
+<add name="AutoSkolaConnectionString" connectionString="Server=DESKTOP-1D3F65B\SQLEXPRESS;Database=AutoSkola;Trusted_Connection=True;"/>
+
+-----GENERISANJE KLASA-----

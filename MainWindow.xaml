@@ -1,0 +1,222 @@
+﻿<Window x:Class="IFZA_Auto_Skola.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IFZA_Auto_Skola"
+        mc:Ignorable="d"
+        Title="IFZA Auto Skola" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Window.Resources>
+        <CollectionViewSource x:Key="autoskolaViewSource"/>
+        <CollectionViewSource x:Key="voziloViewSource"/>
+        <CollectionViewSource x:Key="radnikViewSource"/>
+        <CollectionViewSource x:Key="poligonViewSource"/>
+        <CollectionViewSource x:Key="rutaViewSource"/>
+        <CollectionViewSource x:Key="klijentViewSource"/>
+        <CollectionViewSource x:Key="ispitViewSource"/>
+        <CollectionViewSource x:Key="bonusNastavnikViewSource"/>
+        <CollectionViewSource x:Key="bonusInstruktorViewSource"/>
+        <CollectionViewSource x:Key="statistikaViewSource"/>
+        <CollectionViewSource x:Key="teorijskaViewSource"/>
+    </Window.Resources>
+    <Grid>
+        <TabControl Width="770" Height="375" VerticalAlignment="Top">
+            <TabItem Header="Auto škole">
+                <DataGrid x:Name="AutoSkolaDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource autoskolaViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding AId}" 
+                                            Header="Id"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding AIme}" 
+                                            Header="Naziv"/>
+                        <DataGridTextColumn Binding="{Binding AAdresa}"
+                                            Header="Adresa"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Zaposleni">
+                <DataGrid x:Name="ZaposleniDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource radnikViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding RaId}" 
+                                            Header="Id"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding RaIme}" 
+                                            Header="Ime"/>
+                        <DataGridTextColumn Binding="{Binding RaPrezime}"
+                                            Header="Prezime"/>
+                        <DataGridTextColumn Binding="{Binding RaPlata}"
+                                            Header="Plata"/>
+                        <DataGridTextColumn Binding="{Binding RaTip}"
+                                            Header="Tip"/>
+                        <DataGridTextColumn Binding="{Binding AId}"
+                                            Header="Auto škola"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Dostupna vozila">
+                <DataGrid x:Name="vozilaDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource voziloViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding VId}" 
+                                            Header="Id"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding VProizvodjac}" 
+                                            Header="Proizvodjac"/>
+                        <DataGridTextColumn Binding="{Binding VKilometraza}"
+                                            Header="Kilometraza"/>
+                        <DataGridTextColumn Binding="{Binding VTip}"
+                                            Header="Tip menjača"/>
+                        <DataGridTextColumn Binding="{Binding RaTip}"
+                                            Header="AId"/>
+                        <DataGridTextColumn Binding="{Binding AId}"
+                                            Header="Auto škola"/>
+                        <DataGridTextColumn Binding="{Binding RaId}"
+                                            Header="Instruktor"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Poligoni">
+                <DataGrid x:Name="PoligoniDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource poligonViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding PId}" 
+                                            Header="Id"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding PAdresa}" 
+                                            Header="Adresa"/>
+                        <DataGridTextColumn Binding="{Binding PVelicina}"
+                                            Header="Dostupna mesta"/>
+                        <DataGridTextColumn Binding="{Binding AId}"
+                                            Header="Auto škola"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Rute">
+                <DataGrid x:Name="RutaDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource rutaViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding RuId}" 
+                                            Header="Id"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding RuKilometraza}" 
+                                            Header="Kilometri"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Klijenti">
+                <DataGrid x:Name="klijentiDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource klijentViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding KId}" 
+                                            Header="Id"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding KIme}" 
+                                            Header="Ime"/>
+                        <DataGridTextColumn Binding="{Binding KPrezime}" 
+                                            Header="Prezime"/>
+                        <DataGridTextColumn Binding="{Binding ToId}" 
+                                            Header="Status obuke"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Ispit voznje">
+                <DataGrid x:Name="ispitDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource ispitViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding IId}" 
+                                            Header="Id"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding KIme}" 
+                                            Header="Ime"/>
+                        <DataGridTextColumn Binding="{Binding KPrezime}" 
+                                            Header="Prezime"/>
+                        <DataGridTextColumn Binding="{Binding ITrajanje}" 
+                                            Header="Trajanje ispita"/>
+                        <DataGridTextColumn Binding="{Binding ITip}" 
+                                            Header="Status ispita"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Bonusi za nastavnike">
+                <DataGrid x:Name="bonusiNastavniciDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource bonusNastavnikViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding RaIme}" 
+                                            Header="Ime"/>
+                        <DataGridTextColumn Binding="{Binding RaPlata}"
+                                            Header="Bonus"/>
+                        <DataGridTextColumn Binding="{Binding TFond}"
+                                            Header="Fond časova"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Bonusi za instruktore">
+                <DataGrid x:Name="bonusiInstruktoriDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource bonusInstruktorViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding RaIme}" 
+                                            Header="Ime"/>
+                        <DataGridTextColumn Binding="{Binding RaPlata}"
+                                            Header="Bonus"/>
+                        <DataGridTextColumn Binding="{Binding TFond}"
+                                            Header="Ukupna kilometraza"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Statistika">
+                <DataGrid x:Name="statistikaDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource statistikaViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding KIme}" 
+                                            Header="Status"/>
+                        <DataGridTextColumn Binding="{Binding ToId}" 
+                                            Header="Broj kandidata"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Teorijska Obuka">
+                <DataGrid x:Name="teorijskaDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource teorijskaViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding ToId}" 
+                                            Header="Id"/>
+                        <DataGridTextColumn Binding="{Binding ToFond}" 
+                                            Header="Fond časova"/>
+                        <DataGridTextColumn Binding="{Binding ToBrk}" 
+                                            Header="Broj klijenata"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <!-- <TabItem Header="Ispit">
+                <DataGrid x:Name="ispitiDataGrid"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={StaticResource ispitViewSource}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding IId}" 
+                                            Header="Id"/>
+                        <DataGridTextColumn Binding="{Binding ITrajanje}" 
+                                            Header="Vreme trajanja ispita"/>
+                        <DataGridTextColumn Binding="{Binding ITip}" 
+                                            Header="Kategorija"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem> -->
+        </TabControl>
+        <Button Content="Snimanje" 
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                Height="20" Width="80" Margin="10,10,10,10" Click="Button_Click"/>
+    </Grid>
+</Window>
